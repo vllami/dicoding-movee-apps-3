@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -15,7 +14,7 @@
         tools:ignore="AllowBackup">
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:theme="@style/Theme.ProyekAkhir.TransparentStatusBar">
+            android:theme="@style/Theme.ProyekAkhir.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,15 +22,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.main.MainActivity"
+            android:theme="@style/Theme.ProyekAkhir.NoActionBar" />
+        <activity
+            android:name=".ui.main.watchlist.WatchlistActivity"
             android:theme="@style/Theme.ProyekAkhir.NoActionBar" />
         <activity
             android:name=".ui.details.DetailsActivity"
-            android:parentActivityName=".ui.home.HomeActivity"
+            android:parentActivityName=".ui.main.MainActivity"
             android:theme="@style/Theme.ProyekAkhir.TransparentStatusBar" />
-        <activity
-            android:name=".ui.home.fab_watchlist.WatchlistActivity"
-            android:theme="@style/Theme.ProyekAkhir.NoActionBar" />
     </application>
 
 </manifest>

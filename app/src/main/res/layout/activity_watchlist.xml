@@ -4,66 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorDarkGray"
-    tools:context=".ui.home.fab_watchlist.WatchlistActivity">
+    android:background="@color/dark_gray"
+    tools:context=".ui.main.watchlist.WatchlistActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="?attr/actionBarSize"
-        android:background="@null"
-        android:elevation="5dp"
+        android:background="@color/dark_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navigationIcon="@drawable/ic_arrow_back" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:fontFamily="@font/muli"
-        android:gravity="center"
-        android:text="Watchlist"
-        android:textColor="@color/colorWhite"
-        android:textSize="21.5sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="57dp"
+        android:fontFamily="@font/encodesans_medium"
+        android:gravity="center_vertical"
+        android:paddingBottom="1dp"
+        android:text="@string/watchlist"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="98dp"
-        android:background="@color/colorDarkGray"
-        android:elevation="4.5dp"
-        android:paddingTop="18dp"
-        android:paddingBottom="36dp"
+        android:layout_width="0dp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginHorizontal="18dp"
+        android:background="@color/dark_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:tabGravity="center"
-        app:tabIndicator="@drawable/bg_selected_tab_indicator"
-        app:tabIndicatorAnimationMode="linear"
-        app:tabIndicatorColor="@color/colorLightGray"
-        app:tabIndicatorGravity="stretch"
-        app:tabMaxWidth="0dp"
+        app:tabIndicatorColor="@color/white"
+        app:tabIndicatorGravity="top"
+        app:tabIndicatorHeight="1.5dp"
         app:tabMode="fixed"
-        app:tabPaddingBottom="4.5dp"
-        app:tabPaddingEnd="45dp"
-        app:tabPaddingStart="45dp"
-        app:tabPaddingTop="3dp"
         app:tabRippleColor="@null"
-        app:tabSelectedTextColor="@color/colorDarkGray"
+        app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/Theme.ProyekAkhir.TabLayout"
-        app:tabTextColor="@color/colorLightGray" />
+        app:tabTextColor="@color/white" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@drawable/bg_top_radius_lightgray"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tabs"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs" />
-
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

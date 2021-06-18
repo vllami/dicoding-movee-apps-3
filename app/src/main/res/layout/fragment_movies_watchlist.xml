@@ -4,31 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.fab_watchlist.tab_movies.MoviesWatchlistFragment">
+    tools:context=".ui.main.watchlist.movies.MoviesWatchlistFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movies"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        android:paddingTop="18dp"
+        android:overScrollMode="ifContentScrolls"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/items_movies" />
+        tools:listitem="@layout/item_list" />
 
-    <com.github.ybq.android.spinkit.SpinKitView
+    <ProgressBar
         android:id="@+id/loading"
-        style="@style/SpinKitView.Large.Pulse"
         android:layout_width="46dp"
         android:layout_height="46dp"
+        android:indeterminateTint="@color/white"
         android:visibility="gone"
-        app:SpinKit_Color="@color/colorDarkGray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="@+id/rv_movies" />
 </androidx.constraintlayout.widget.ConstraintLayout>

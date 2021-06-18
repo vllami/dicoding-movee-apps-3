@@ -18,7 +18,6 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // for 'com.github.ybq:Android-SpinKit:1.4.0'
     }
 }
 

@@ -2,46 +2,47 @@ package com.dicoding.proyekakhir.ui.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.dicoding.proyekakhir.data.entity.MoviesEntity
-import com.dicoding.proyekakhir.data.entity.TvShowsEntity
-import com.dicoding.proyekakhir.data.remote.repository.Repository
-import com.dicoding.proyekakhir.vo.Resource
+import com.dicoding.proyekakhir.core.model.entity.MoviesEntity
+import com.dicoding.proyekakhir.core.model.entity.TvShowsEntity
+import com.dicoding.proyekakhir.core.repository.MoveeRepository
+import com.dicoding.proyekakhir.core.utils.Resource
 
-class DetailsViewModel(private val repository: Repository) : ViewModel() {
+class DetailsViewModel(private val moveeRepository: MoveeRepository) : ViewModel() {
 
     private lateinit var moviesEntity: LiveData<Resource<MoviesEntity>>
     private lateinit var tvShowsEntity: LiveData<Resource<TvShowsEntity>>
 
-    fun setMoviesData(id: Int) : LiveData<Resource<MoviesEntity>> {
-        repository.loadMoviesDetails(id).also {
-            return it
-        }
+    fun setMoviesData(moviesID: Int) : LiveData<Resource<MoviesEntity>> {
+        moviesEntity = moveeRepository.loadMoviesDetails(moviesID)
+
+        return moviesEntity
     }
 
-    fun setTvShowsData(id: Int) : LiveData<Resource<TvShowsEntity>> {
-        repository.loadTvShowsDetails(id).also {
-            return it
-        }
+    fun setTvShowsData(tvShowsID: Int) : LiveData<Resource<TvShowsEntity>> {
+        tvShowsEntity = moveeRepository.loadTvShowsDetails(tvShowsID)
+
+        return tvShowsEntity
     }
 
     fun setMoviesWatchlist() {
-        moviesEntity.value.also { moviesEntity ->
-            if (moviesEntity?.data != null) {
-                !moviesEntity.data.addWatchlist.also {
-                    repository.setMoviesWatchlist(moviesEntity.data, it)
+        moviesEntity.value.also {
+            if (it?.data != null) {
+                it.data.apply {
+                    moveeRepository.setMoviesWatchlist(this, !this.watchlist)
                 }
             }
         }
     }
 
     fun setTvShowsWatchlist() {
-        tvShowsEntity.value.also { tvShowsEntity ->
-            if (tvShowsEntity?.data != null) {
-                !tvShowsEntity.data.addWatchlist.also {
-                    repository.setTvShowsWatchlist(tvShowsEntity.data, it)
+        tvShowsEntity.value.also {
+            if (it?.data != null) {
+                it.data.apply {
+                    moveeRepository.setTvShowsWatchlist(this, !this.watchlist)
                 }
             }
         }
     }
 
 }
+
